@@ -1,12 +1,15 @@
 package com.websitethoitrang.entities;
-// Generated Dec 6, 2022, 2:28:47 PM by Hibernate Tools 4.3.5.Final
+// Generated Dec 14, 2022, 9:49:56 PM by Hibernate Tools 4.3.5.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,8 +21,10 @@ public class Taikhoan implements java.io.Serializable {
 
 	private String tentk;
 	private Khachhang khachhang;
+	private Quyen quyen;
 	private String matkhau;
 	private String manv;
+	private Set<Danhgia> danhgias = new HashSet<Danhgia>(0);
 
 	public Taikhoan() {
 	}
@@ -29,11 +34,14 @@ public class Taikhoan implements java.io.Serializable {
 		this.matkhau = matkhau;
 	}
 
-	public Taikhoan(String tentk, Khachhang khachhang, String matkhau, String manv) {
+	public Taikhoan(String tentk, Khachhang khachhang, Quyen quyen, String matkhau, String manv,
+			Set<Danhgia> danhgias) {
 		this.tentk = tentk;
 		this.khachhang = khachhang;
+		this.quyen = quyen;
 		this.matkhau = matkhau;
 		this.manv = manv;
+		this.danhgias = danhgias;
 	}
 
 	@Id
@@ -57,6 +65,16 @@ public class Taikhoan implements java.io.Serializable {
 		this.khachhang = khachhang;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MAQUYEN")
+	public Quyen getQuyen() {
+		return this.quyen;
+	}
+
+	public void setQuyen(Quyen quyen) {
+		this.quyen = quyen;
+	}
+
 	@Column(name = "MATKHAU", nullable = false, length = 16)
 	public String getMatkhau() {
 		return this.matkhau;
@@ -73,6 +91,15 @@ public class Taikhoan implements java.io.Serializable {
 
 	public void setManv(String manv) {
 		this.manv = manv;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "taikhoan")
+	public Set<Danhgia> getDanhgias() {
+		return this.danhgias;
+	}
+
+	public void setDanhgias(Set<Danhgia> danhgias) {
+		this.danhgias = danhgias;
 	}
 
 }

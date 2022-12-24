@@ -1,5 +1,5 @@
 package com.websitethoitrang.entities;
-// Generated Dec 6, 2022, 2:28:47 PM by Hibernate Tools 4.3.5.Final
+// Generated Dec 14, 2022, 9:49:56 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,6 @@ public class Kho implements java.io.Serializable {
 	private String makho;
 	private String tenkho;
 	private Set<Phieunhap> phieunhaps = new HashSet<Phieunhap>(0);
-	private Set<Dondathang> dondathangs = new HashSet<Dondathang>(0);
 	private Set<Phieuxuat> phieuxuats = new HashSet<Phieuxuat>(0);
 	private Set<KhoMhSize> khoMhSizes = new HashSet<KhoMhSize>(0);
 
@@ -32,12 +31,11 @@ public class Kho implements java.io.Serializable {
 		this.tenkho = tenkho;
 	}
 
-	public Kho(String makho, String tenkho, Set<Phieunhap> phieunhaps, Set<Dondathang> dondathangs,
-			Set<Phieuxuat> phieuxuats, Set<KhoMhSize> khoMhSizes) {
+	public Kho(String makho, String tenkho, Set<Phieunhap> phieunhaps, Set<Phieuxuat> phieuxuats,
+			Set<KhoMhSize> khoMhSizes) {
 		this.makho = makho;
 		this.tenkho = tenkho;
 		this.phieunhaps = phieunhaps;
-		this.dondathangs = dondathangs;
 		this.phieuxuats = phieuxuats;
 		this.khoMhSizes = khoMhSizes;
 	}
@@ -69,15 +67,6 @@ public class Kho implements java.io.Serializable {
 
 	public void setPhieunhaps(Set<Phieunhap> phieunhaps) {
 		this.phieunhaps = phieunhaps;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "kho")
-	public Set<Dondathang> getDondathangs() {
-		return this.dondathangs;
-	}
-
-	public void setDondathangs(Set<Dondathang> dondathangs) {
-		this.dondathangs = dondathangs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "kho")

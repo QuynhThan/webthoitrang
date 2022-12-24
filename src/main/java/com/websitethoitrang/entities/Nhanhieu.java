@@ -1,5 +1,5 @@
 package com.websitethoitrang.entities;
-// Generated Dec 6, 2022, 2:28:47 PM by Hibernate Tools 4.3.5.Final
+// Generated Dec 14, 2022, 9:49:56 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;

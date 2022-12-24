@@ -1,5 +1,5 @@
 package com.websitethoitrang.entities;
-// Generated Dec 6, 2022, 2:28:47 PM by Hibernate Tools 4.3.5.Final
+// Generated Dec 14, 2022, 9:49:56 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,6 @@ import javax.persistence.Table;
 public class Dondathang implements java.io.Serializable {
 
 	private String maddh;
-	private Kho kho;
 	private Nhacungcap nhacungcap;
 	private Nhanvien nhanvien;
 	private String ngaydat;
@@ -30,17 +29,15 @@ public class Dondathang implements java.io.Serializable {
 	public Dondathang() {
 	}
 
-	public Dondathang(String maddh, Kho kho, Nhacungcap nhacungcap, Nhanvien nhanvien) {
+	public Dondathang(String maddh, Nhacungcap nhacungcap, Nhanvien nhanvien) {
 		this.maddh = maddh;
-		this.kho = kho;
 		this.nhacungcap = nhacungcap;
 		this.nhanvien = nhanvien;
 	}
 
-	public Dondathang(String maddh, Kho kho, Nhacungcap nhacungcap, Nhanvien nhanvien, String ngaydat,
-			Set<Phieunhap> phieunhaps, Set<Ctddh> ctddhs) {
+	public Dondathang(String maddh, Nhacungcap nhacungcap, Nhanvien nhanvien, String ngaydat, Set<Phieunhap> phieunhaps,
+			Set<Ctddh> ctddhs) {
 		this.maddh = maddh;
-		this.kho = kho;
 		this.nhacungcap = nhacungcap;
 		this.nhanvien = nhanvien;
 		this.ngaydat = ngaydat;
@@ -57,16 +54,6 @@ public class Dondathang implements java.io.Serializable {
 
 	public void setMaddh(String maddh) {
 		this.maddh = maddh;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MAKHO", nullable = false)
-	public Kho getKho() {
-		return this.kho;
-	}
-
-	public void setKho(Kho kho) {
-		this.kho = kho;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

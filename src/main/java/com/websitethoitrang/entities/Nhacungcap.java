@@ -1,5 +1,5 @@
 package com.websitethoitrang.entities;
-// Generated Dec 6, 2022, 2:28:47 PM by Hibernate Tools 4.3.5.Final
+// Generated Dec 14, 2022, 9:49:56 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -58,7 +58,7 @@ public class Nhacungcap implements java.io.Serializable {
 		this.mancc = mancc;
 	}
 
-	@Column(name = "TENNCC", nullable = false, length = 500)
+	@Column(name = "TENNCC", nullable = false, length = 50)
 	public String getTenncc() {
 		return this.tenncc;
 	}
@@ -76,7 +76,7 @@ public class Nhacungcap implements java.io.Serializable {
 		this.diachi = diachi;
 	}
 
-	@Column(name = "EMAIL", unique = true, nullable = false, length = 100)
+	@Column(name = "EMAIL", unique = true, nullable = false, length = 50)
 	public String getEmail() {
 		return this.email;
 	}

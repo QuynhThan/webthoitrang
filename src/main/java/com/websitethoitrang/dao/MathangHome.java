@@ -3,9 +3,14 @@ package com.websitethoitrang.dao;
 
 //import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 
 import com.websitethoitrang.entities.Mathang;
 
@@ -15,6 +20,7 @@ import com.websitethoitrang.entities.Mathang;
  * @author Hibernate Tools
  */
 //@Stateless
+
 public class MathangHome {
 
 	private static final Log log = LogFactory.getLog(MathangHome.class);
@@ -43,11 +49,13 @@ public class MathangHome {
 			throw re;
 		}
 	}
-
+	@org.springframework.transaction.annotation.Transactional
 	public Mathang merge(Mathang detachedInstance) {
 		log.debug("merging Mathang instance");
 		try {
+			
 			Mathang result = entityManager.merge(detachedInstance);
+		
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -55,7 +63,7 @@ public class MathangHome {
 			throw re;
 		}
 	}
-
+	
 	public Mathang findById(String id) {
 		log.debug("getting Mathang instance with id: " + id);
 		try {
